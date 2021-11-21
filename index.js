@@ -1,5 +1,5 @@
 function getCostumerAge() {
-	return prompt("How old are you?");
+	return Number(prompt("How old are you?"));
 }
 
 function getStartingStation() {
@@ -53,25 +53,37 @@ function isASenior(costumerAge) {
 	return costumerAge >= 65;
 }
 
+function applyJuniorDiscount(ticketPrice) {
+	alert("You get a junior discount of 20%");
+	return ticketPrice * 0.8;
+}
+function applySeniorDiscount(ticketPrice) {
+	alert("You get a senior discount of 40%");
+	return ticketPrice * 0.6;
+}
+
 function calculateTicketPrice(costumerAge, distance) {
 	const pricePerKilometer = 0.21;
 	let ticketPrice = distance * pricePerKilometer;
 	if (isAJunior(costumerAge)) {
-		ticketPrice = ticketPrice * 0.8;
+		ticketPrice = applyJuniorDiscount(ticketPrice);
 	} else if (isASenior(costumerAge)) {
-		ticketPrice = ticketPrice * 0.6;
+		ticketPrice = applySeniorDiscount(ticketPrice);
 	}
 	return ticketPrice;
+}
+
+function showTicketPrice(ticketPrice) {
+	if (ticketPrice > 0) {
+		alert(`Your ticket price is £${ticketPrice.toFixed(2)}`);
+	} else {
+		alert("Oops you typed something wrong. Please reload the page and try again");
+	}
 }
 
 const costumerAge = getCostumerAge();
 const startingStation = getStartingStation();
 const destinationStation = getEndingStation();
 const distanceToTravel = calculateDistance(startingStation, destinationStation);
-let ticketPrice = calculateTicketPrice(costumerAge, distanceToTravel);
-
-if (ticketPrice > 0) {
-	alert(`Your ticket price is £${ticketPrice.toFixed(2)}`);
-} else {
-	alert("Oops you typed something wrong. Please reload the page and try again");
-}
+const ticketPrice = calculateTicketPrice(costumerAge, distanceToTravel);
+showTicketPrice(ticketPrice);
