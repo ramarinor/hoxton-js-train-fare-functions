@@ -5,20 +5,20 @@ function getCostumerAge() {
 function getStartingStation() {
 	return Number(
 		prompt(`From which station are you travelling? Type:
-	1 for Prishtina
-	2 for Prizren
-	3 for Mitrovica
-	4 for Peja`)
+		1 for Prishtina
+		2 for Prizren
+		3 for Mitrovica
+		4 for Peja`)
 	);
 }
 
 function getEndingStation() {
 	return Number(
 		prompt(`What is the destination station you want to travel to? Type:
-	1 for Prishtina
-	2 for Prizren
-	3 for Mitrovica
-	4 for Peja`)
+		1 for Prishtina
+		2 for Prizren
+		3 for Mitrovica
+		4 for Peja`)
 	);
 }
 
@@ -46,13 +46,20 @@ function calculateDistance(startingStation, destinationStation) {
 	}
 }
 
+function isAJunior(costumerAge) {
+	return costumerAge <= 18;
+}
+function isASenior(costumerAge) {
+	return costumerAge >= 65;
+}
+
 function calculateTicketPrice(costumerAge, distance) {
 	const pricePerKilometer = 0.21;
 	let ticketPrice = distance * pricePerKilometer;
-	if (costumerAge <= 18) {
+	if (isAJunior(costumerAge)) {
 		ticketPrice = ticketPrice * 0.8;
 	}
-	if (costumerAge >= 65) {
+	if (isASenior(costumerAge) >= 65) {
 		ticketPrice = ticketPrice * 0.6;
 	}
 	return ticketPrice;
