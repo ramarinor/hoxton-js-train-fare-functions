@@ -58,8 +58,7 @@ function calculateTicketPrice(costumerAge, distance) {
 	let ticketPrice = distance * pricePerKilometer;
 	if (isAJunior(costumerAge)) {
 		ticketPrice = ticketPrice * 0.8;
-	}
-	if (isASenior(costumerAge)) {
+	} else if (isASenior(costumerAge)) {
 		ticketPrice = ticketPrice * 0.6;
 	}
 	return ticketPrice;
