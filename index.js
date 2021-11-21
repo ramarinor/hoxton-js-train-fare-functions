@@ -59,7 +59,7 @@ function calculateTicketPrice(costumerAge, distance) {
 	if (isAJunior(costumerAge)) {
 		ticketPrice = ticketPrice * 0.8;
 	}
-	if (isASenior(costumerAge) >= 65) {
+	if (isASenior(costumerAge)) {
 		ticketPrice = ticketPrice * 0.6;
 	}
 	return ticketPrice;
